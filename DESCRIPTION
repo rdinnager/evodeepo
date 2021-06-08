@@ -16,4 +16,15 @@ LazyData: true
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 Imports: 
+    adegenet,
+    ape,
+    Biostrings,
+    magrittr,
+    purrr,
     torch
+Suggests: 
+    knitr,
+    dartR,
+    rmarkdown,
+    StAMPP
+VignetteBuilder: knitr

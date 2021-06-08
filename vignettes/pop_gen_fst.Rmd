@@ -1,0 +1,29 @@
+---
+title: "Population Genetice Measures: F~st~"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Population Genetice Measures: F~st~}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+In this vignette we show an example of `evodeepo`'s functions for calculating population genetic measure, in this case F~st~. The main reason to use `evodeepo` for this is speed. Though this technically has nothing in particular to do with deep learning, which is the main point of `evodeepo`, the deep learning library on which `evodeepo` is based `torch`, is highly optimized and so by using it to calculate these measures we can achieve a massive speedup over calculations done in base R. Here we demonstrate the `evd_fst()` function and benchmark it against `StAMPP::stamppFst()` (though not they calculate different estimates of Fst, but we will talk more about that later on). Let's load the packages we will need.
+
+```{r setup}
+library(evodeepo)
+library(dartR)
+library(StAMPP) 
+```
+
+For this example we will use an dataset in the dartR package with SNP data on bandicoots. Later we will use some simulated data to test the method on a much larger number of SNPs. Let's try calculating F~st~ directly on this bandicoot `genlight` object. 
+
+```{r}
+bandicoot_fst <- evd_fst(bandicoot.gl)
+```
